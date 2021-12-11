@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: wordpress-service
 spec:
-  type: NodePort #used for services that need to be exposed outside the node ie a front-end
+  type: LoadBalancer #used for services that need to be exposed outside the node ie a front-end
   ports:
    - port: 80
      targetPort: 80
