@@ -5,7 +5,7 @@ This is a simple word press kubernetes deployment using AWS EKS. The Word press 
 1. Create EC2 instance for deployment - ubuntu prefered.
 2. Create EC2 iam role and attach aws admin policy to it.
 3. Add EC2 iam role to EC2 instance.
-4. Install aws iam authenticator. Need this to give kubectl access to the eks cluster - https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
+4. Install aws iam authenticator. This is to give kubectl access to the eks cluster, without access the `kubectl` command will not work - https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
 5. Download eksctl using command.
     `curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp`
     `sudo mv /tmp/eksctl /usr/local/bin`
