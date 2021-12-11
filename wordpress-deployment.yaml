@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-service
+spec:
+  type: NodePort #used for services that need to be exposed outside the node ie a front-end
+  ports:
+   - port: 80
+     targetPort: 80
+     nodePort: 30004
+  selector:
+    app: wordpress #this is used to bind this service to the deployment (deployment-example.yml)
+    tier: frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-deployment
+  labels:
+    app: wordpress 
+    tier: frontend
+spec:
+  selector:
+    matchLabels:
+      app: wordpress 
+      tier: frontend
+  replicas: 1
+  template:
+    metadata:
+      name: wordpress
+      labels:
+        app: wordpress 
+        tier: frontend
+    spec:
+      containers:
+        - name: wordpress
+          image: wordpress
+          ports:
+          - containerPort: 80
+            name: wordpress
+          envFrom:
+          - configMapRef:
+              name: wordpress-config
+
