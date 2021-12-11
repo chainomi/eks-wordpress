@@ -28,12 +28,11 @@ This is a simple word press kubernetes deployment using AWS EKS. The Word press 
 6. Keep trying until domain name has propergated and can be resolved
 7. Open the load balancer url in a browser to view the word press application
 
-
-## eksctl yaml
-1. You can find config for yaml here https://eksctl.io/usage/schema/
-
 ## Deleting deployment & EKS cluster
 1. Delete configMap - `kubectl create -f configmap.yaml`
 2. Delete mysql - `kubectl create -f mysql-deployment.yaml`
 3. Delete wordpress - `kubectl create -f wordpress-deployment.yaml`
 4. Delete eks cluser - `eksctl delete cluster -f eks-wordpress.yaml`
+
+## eksctl yaml
+1. This is a good resource for creating eksctl yaml files - https://eksctl.io/usage/schema/
