@@ -1,7 +1,7 @@
 # Sample EKS word-press deployment using EKS
 This is a simple word press kubernetes deployment using AWS EKS. The Word press application uses a mysql database (not externally exposed)
 
-## Setup
+## Setting up instance and tools
 1. Create EC2 instance for deployment - ubuntu prefered.
 2. Create EC2 iam role and attach aws admin policy to it.
 3. Add EC2 iam role to EC2 instance.
@@ -12,10 +12,12 @@ This is a simple word press kubernetes deployment using AWS EKS. The Word press 
 6. check the version
     `eksctl version`
 7. Install kubectl - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-8. Clone repo to EC2 instance
-9. cd into cloned repo and create cluster with eksctl - `eksctl create cluster -f eks-wordpress.yaml`
-10. Cluster creation will take 15-20 minutes. This process uses cloudformation in the backgroud
-11. Run `kubectl get nodes` to see all nodes created
+
+## Setting up EKS cluster and resources
+1. Clone repo to EC2 instance.
+2. cd into cloned repo and create cluster with eksctl - `eksctl create cluster -f eks-wordpress.yaml`
+3. Cluster creation will take 15-20 minutes. Note that this process uses cloudformation in the backgroud. Cloud formation stack can be viewed from AWS console.
+4. Run `kubectl get nodes` to see all nodes created.
 
 ## Deployment
 1. Deploy configMap - `kubectl create -f configmap.yaml`
@@ -30,3 +32,8 @@ This is a simple word press kubernetes deployment using AWS EKS. The Word press 
 ## eksctl yaml
 1. You can find config for yaml here https://eksctl.io/usage/schema/
 
+## Deleting deployment & EKS cluster
+1. Delete configMap - `kubectl create -f configmap.yaml`
+2. Delete mysql - `kubectl create -f mysql-deployment.yaml`
+3. Delete wordpress - `kubectl create -f wordpress-deployment.yaml`
+4. Delete eks cluser - `eksctl delete cluster -f eks-wordpress.yaml`
