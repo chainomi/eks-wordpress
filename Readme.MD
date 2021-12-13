@@ -1,4 +1,4 @@
-# Sample EKS word-press deployment using EKS
+# Sample Kubernetes word-press deployment using EKS
 This is a simple word press kubernetes deployment using AWS EKS. The Word press application uses a mysql database (not externally exposed)
 
 ## Setting up instance and tools
